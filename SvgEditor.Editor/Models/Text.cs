@@ -5,11 +5,32 @@ namespace SvgEditor.Editor.Models;
 [XmlRoot("Text")]
 public class Text : Shape
 {
+    private int? _x;
+    private int? _y;
+    [XmlIgnore]
+    public int? X {
+        get => _x;
+        set => _x = value;
+    }
+    [XmlIgnore]
+    public int? Y {
+        get => _y;
+        set => _y = value;
+    }
+
     [XmlAttribute("x")]
-    public string? X { get; set; }
+    public string? XText 
+    { 
+        get => _x is null ? null : _x.ToString(); 
+        set{} 
+    }
 
     [XmlAttribute("y")]
-    public string? Y { get; set; }
+    public string? YText
+    { 
+        get => _y is null ? null : _y.ToString(); 
+        set{} 
+    }
 
     [XmlAttribute("font-size")]
     public string? fontSize { get; set; } = null!;
