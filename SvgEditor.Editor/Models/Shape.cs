@@ -2,20 +2,64 @@ using System.Xml.Serialization;
 
 namespace SvgEditor.Editor.Models;
 
-[XmlInclude(typeof(Circle)), XmlInclude(typeof(Rectangle))]
-public abstract class Shape {
+[
+    XmlInclude(typeof(Circle)), 
+    XmlInclude(typeof(Rectangle)),
+    XmlInclude(typeof(Text)),
+    XmlInclude(typeof(TextSpan)),
+    XmlInclude(typeof(PolyLine))
+]
+public abstract class Shape 
+{
+    private int? _strokeWidth;
+    private int? _strokeDashArray;
+    private double? _opacity;
+
+    [XmlIgnore]
+    public int? StrokeWidth 
+    {
+        get => _strokeWidth; 
+        set => _strokeWidth = value;
+    }
+
+    [XmlIgnore]
+    public int? StrokeDasharray 
+    {
+        get => _strokeDashArray; 
+        set => _strokeDashArray = value;
+    }
+
+    [XmlIgnore]
+    public double? Opacity 
+    {
+        get => _opacity; 
+        set => _opacity = value;
+    }
+
     [XmlAttribute("stroke")]
-    public string Stroke { get; set; } = "Blakc";
+    public string? Stroke { get; set; }
+
+    
 
     [XmlAttribute("stroke-width")]
-    public int StrokeWidth { get; set; }
+    public string? StrokeWidthText 
+    { 
+        get  => StrokeWidth == null ? null : StrokeWidth.ToString();
+        set{}
+    }
 
     [XmlAttribute("stroke-dasharray")]
-    public int StrokeDasharray { get; set; }
+    public string? StrokeDasharrayText { 
+        get => _strokeDashArray == null ? null : _strokeDashArray.ToString();
+        set {}
+    }
 
     [XmlAttribute("fill")]
-    public string Fill { get; set; } = "Blue";
-
+    public string? Fill { get; set;}
+  
     [XmlAttribute("opacity")]
-    public double Opacity { get; set; } = 1.0;
+    public string? OpacityText { 
+        get => _opacity == null ? null : _opacity.ToString();
+        set {}
+    }
 }
