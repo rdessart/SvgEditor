@@ -6,17 +6,21 @@ namespace SvgEditor.Editor.Models;
 public class Text : Shape
 {
     [XmlAttribute("x")]
-    public int X { get; set; }
+    public string? X { get; set; }
 
     [XmlAttribute("y")]
-    public int Y { get; set; }
+    public string? Y { get; set; }
 
     [XmlAttribute("font-size")]
-    public string fontSize { get; set; } = null!;
+    public string? fontSize { get; set; } = null!;
 
     [XmlAttribute("font-family")]
-    public string fontFamily { get; set; } = null!;
+    public string? fontFamily { get; set; } = null!;
 
     [XmlText] 
     public string Content { get; set; } = null!;
+
+    [XmlElement(ElementName="tspan")] 
+	public List<TextSpan>? Tspan { get; set; } 
+
 }
