@@ -100,18 +100,25 @@ static void GenerateSVG()
     });
 
     svg.Texts.Add(new Text(){
-        Content = "35",
-        X = 200,
-        Y = 150,
+        Content = "3",
+        X = "200",
+        Y = "150",
         fontSize = "50px",
         fontFamily = "Verdana",
-        Fill = "Red"
+        Fill = "Red",
+        Tspan = new List<TextSpan>(){
+            new TextSpan()
+            {
+                Content = "5",
+                fontSize = "40px"
+            }
+        }
     });
 
     svg.Texts.Add(new Text(){
         Content = "25",
-        X = 100,
-        Y = 350,
+        X = "100",
+        Y = "350",
         fontSize = "50px",
         fontFamily = "Verdana",
         Fill = "Red"
@@ -119,8 +126,8 @@ static void GenerateSVG()
 
     svg.Texts.Add(new Text(){
         Content = "31",
-        X = 300,
-        Y = 350,
+        X = "300",
+        Y = "350",
         fontSize = "50px",
         fontFamily = "Verdana",
         Fill = "Red"
